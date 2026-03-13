@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Galeria de ArqVision</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.7;
+        }
+
+
+        .slider {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .slide.ativo {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(60%);
+        }
+
+
+
+        .texto {
+            position: absolute;
+            top: 25%;
+            left: 10%;
+            max-width: 500px;
+        }
+
+        .titulo {
+            font-size: 50px;
+        }
+
+        .subtitulo {
+            color: #ff4772;
+            font-size: 25px;
+            margin: 10px 0;
+        }
+
+
+
+        .miniaturas {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        .miniatura {
+            width: 120px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+
+        .miniatura img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .miniatura.ativa {
+            border-color: #ff4772;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">ArqVision</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">INÍCIO</a></li>
+                <li><a href="Projetos.html">PROJETOS</a></li>
+                <li><a href="sobre.html">SOBRE</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="slider">
+
+
+
+        <div class="slide ativo">
+            <img src="https://cinqdi.com.br/wp-content/uploads/2024/08/Cinq-Parqville-Pinheiros-1920x1080-3.webp">
+            <div class="texto">
+                <h1 class="titulo"></h1>
+                <p class="subtitulo"></p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="https://blog.archtrends.com/wp-content/uploads/2022/10/casas-modernas.jpg">
+            <div class="texto">
+                <h1 class="titulo"></h1>
+                <p class="subtitulo"></p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="https://images.homify.com/v1553964659/p/photo/image/2986705/Casa_c_facahda_01-PS.jpg">
+            <div class="texto">
+                <h1 class="titulo"></h1>
+                <p class="subtitulo"></p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img
+                src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/01/casa-de-vidro-arquitetura.webp?w=888">
+            <div class="texto">
+                <h1 class="titulo"></h1>
+                <p class="subtitulo"></p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="miniaturas">
+
+        <div class="miniatura ativa">
+            <img src="https://cinqdi.com.br/wp-content/uploads/2024/08/Cinq-Parqville-Pinheiros-1920x1080-3.webp">
+        </div>
+
+        <div class="miniatura">
+            <img src="https://blog.archtrends.com/wp-content/uploads/2022/10/casas-modernas.jpg">
+        </div>
+
+        <div class="miniatura">
+            <img src="https://images.homify.com/v1553964659/p/photo/image/2986705/Casa_c_facahda_01-PS.jpg">
+        </div>
+
+        <div class="miniatura">
+            <img
+                src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/01/casa-de-vidro-arquitetura.webp?w=888">
+        </div>
+
+    </div>
+
+    <script>
+
+        let slides = document.querySelectorAll(".slide")
+        let miniaturas = document.querySelectorAll(".miniatura")
+
+        miniaturas.forEach((miniatura, indice) => {
+
+            miniatura.addEventListener("click", () => {
+
+                slides.forEach(slide => slide.classList.remove("ativo"))
+                miniaturas.forEach(m => m.classList.remove("ativa"))
+
+                slides[indice].classList.add("ativo")
+                miniaturas[indice].classList.add("ativa")
+
+            })
+
+        })
+
+    </script>
+
+</body>
+
+</html>
