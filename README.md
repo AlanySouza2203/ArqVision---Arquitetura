@@ -62,7 +62,7 @@ A página **Sobre** apresenta a história e a filosofia do estúdio.
 - Escuta Atenta  
 - Diálogo com a Paisagem  
 - Projeto Sob Medida  
-- Acompanhamento Total  
+
 
 ---
 ---
